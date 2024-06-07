@@ -1,0 +1,1 @@
+body,html{padding:0;margin:0}*{box-sizing:border-box}.header{background-color:#eee;display:flex;justify-content:center;align-items:center}.header_container{max-width:1280px;width:100%;display:flex;justify-content:space-between;align-items:center}.header_container .header_center .header_menu_list{display:flex}
