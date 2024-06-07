@@ -58,7 +58,19 @@ function gwatch() {
   watch("./*.html").on("change", browserSync.reload);
 }
 
+async function build(){
+  const files = [
+    { src: "./assets/css/**/*.css", dest: "./dist/assets/css/" },
+    { src: "./assets/js/**/*.js", dest: "./dist/assets/js/" },
+    { src: "./index.html", dest: "./dist/" },
+  ];
+  await files.map(file => {
+    return src(file.src).pipe(dest(file.dest));
+  });
+}
+
 exports.compileSass = compileSass;
 exports.javascript = series(javascript);
 exports.watch = gwatch;
+exports.build = build;
 exports.default = parallel(compileSass, series(javascript), fbrowserSync, gwatch);
