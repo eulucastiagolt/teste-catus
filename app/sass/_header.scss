@@ -20,8 +20,12 @@
 
       &_right{
         display: flex;
+        gap: 30px;
+        align-items: center;
 
         @include search-header;
+
+        @include cart-header;
       }
     }
   }

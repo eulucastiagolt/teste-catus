@@ -1,0 +1,13 @@
+@mixin cart-header {
+  .header{
+    &_cart{
+      &_button{
+        &:hover{
+          svg path{
+            fill: $primary;
+          }
+        }
+      }
+    }
+  }
+}

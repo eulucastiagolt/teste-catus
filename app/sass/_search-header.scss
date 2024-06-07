@@ -1,11 +1,37 @@
 @mixin search-header {
   .header{
     &_search{
+      &_form{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
       &_input{
-        padding: 10px;
+        padding: 10px 0;
         border: none;
         border-bottom: 1px solid $black;
         background: transparent;
+        font-size: 0.875rem;
+
+        &:focus{
+          outline: none;
+          border-bottom-color: $primary;
+        }
+      }
+
+      &_button{
+        border: none;
+        background-color: transparent;
+        padding: 0;
+
+        &:hover{
+          cursor: pointer;
+
+          svg path{
+            fill: $primary;
+          }
+        }
       }
     }
   }

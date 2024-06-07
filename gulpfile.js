@@ -1,4 +1,4 @@
-const { src, watch, dest, parallel, series } = require("gulp");
+const { src, watch, dest, parallel, series, del } = require("gulp");
 const browserSync = require("browser-sync");
 const nodeSass = require("sass");
 const gulpSass = require("gulp-sass");
@@ -9,7 +9,7 @@ const rename = require("gulp-rename");
 
 const sass = gulpSass(nodeSass);
 
-function fbrowserSync() {
+async function fbrowserSync() {
   try {
     browserSync.init({
       server: {
@@ -25,17 +25,16 @@ function fbrowserSync() {
   }
 }
 
-function compileSass() {
+async function compileSass() {
   return src("./app/sass/styles.scss")
-    .pipe(sass({ outputStyle: "compressed", errLogToConsole: true, onError: function(err) {
-            return notify().write(err);
-        } }))
+    .pipe(sass({ outputStyle: "compressed", errLogToConsole: true }))
+    .on("error", sass.logError)
     .pipe(rename({ basename: "styles", suffix: ".min" }))
     .pipe(dest("./assets/css/"))
     .pipe(browserSync.stream({ match: "**/*.css" }));
 }
 
-function javascript() {
+async function javascript() {
   return src(["./app/js/**/*.js"])
     .pipe(gulpConcat("scripts.js"))
     .pipe(
@@ -54,16 +53,21 @@ function javascript() {
     .pipe(rename({ suffix: ".min" }))
 }
 
-function gwatch() {
+async function gwatch() {
   watch("./app/sass/**/*.scss", compileSass);
   watch("./app/js/**/*.js", series(javascript)).on("change", browserSync.reload);
   watch("./*.html").on("change", browserSync.reload);
+}
+
+async function delDist() {
+  return del
 }
 
 async function build(){
   const files = [
     { src: "./assets/css/**/*.css", dest: "./dist/assets/css/" },
     { src: "./assets/js/**/*.js", dest: "./dist/assets/js/" },
+    { src: "./assets/img/**/*", dest: "./dist/assets/img/" },
     { src: "./index.html", dest: "./dist/" },
   ];
   await files.map(file => {

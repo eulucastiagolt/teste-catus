@@ -5,6 +5,8 @@
         display: flex;
         list-style-type: none;
         gap: 30px;
+        margin: 0;
+        padding: 0;
         
         &_item{
           padding: 5px;
@@ -16,7 +18,7 @@
             transition: all 300ms;
 
             &:hover{
-              color: $secondary;
+              color: $primary;
             }
           }
         }
