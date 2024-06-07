@@ -20,6 +20,8 @@
 
       &_right{
         display: flex;
+
+        @include search-header;
       }
     }
   }

@@ -1,0 +1,12 @@
+@mixin search-header {
+  .header{
+    &_search{
+      &_input{
+        padding: 10px;
+        border: none;
+        border-bottom: 1px solid $black;
+        background: transparent;
+      }
+    }
+  }
+}
