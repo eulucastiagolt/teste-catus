@@ -28,7 +28,7 @@ function fbrowserSync() {
 function compileSass() {
   return src("./app/sass/styles.scss")
     .pipe(sass({ outputStyle: "compressed" }))
-    .pipe(rename({ basename: "styles", suffix: ".min" }))
+    .pipe(rename({ basename: "stylesss", suffix: ".min" }))
     .pipe(dest("./assets/css/"))
     .pipe(browserSync.stream({ match: "**/*.css" }));
 }

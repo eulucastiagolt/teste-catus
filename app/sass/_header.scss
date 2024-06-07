@@ -3,6 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px 16px;
 
   &_container{
     max-width: 1280px;
@@ -15,6 +16,10 @@
     .header{
       &_center{
         @include header-menu;
+      }
+
+      &_right{
+        display: flex;
       }
     }
   }
