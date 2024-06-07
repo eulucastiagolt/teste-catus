@@ -1,0 +1,9 @@
+@mixin header-menu{
+  .header{
+    &_menu{
+      &_list{
+        display: flex;
+      }
+    }
+  }
+}

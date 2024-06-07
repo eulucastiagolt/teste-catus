@@ -1,0 +1,21 @@
+.header{
+  background-color: $header_background;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &_container{
+    max-width: 1280px;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .header{
+      &_center{
+        @include header-menu;
+      }
+    }
+  }
+}
