@@ -1,11 +1,13 @@
-const { src, watch, dest, parallel, series, del } = require("gulp");
-const browserSync = require("browser-sync");
-const nodeSass = require("sass");
-const gulpSass = require("gulp-sass");
-const gulpConcat = require("gulp-concat");
-const babel = require("gulp-babel");
-const minify = require("gulp-babel-minify");
-const rename = require("gulp-rename");
+import { src, watch, dest, parallel, series } from "gulp";
+import browserSync from "browser-sync";
+import * as nodeSass from "sass";
+import gulpSass from "gulp-sass";
+import gulpConcat from "gulp-concat";
+import babel from "gulp-babel";
+import minify from "gulp-babel-minify";
+import rename from "gulp-rename";
+import { deleteAsync } from "del";
+
 
 const sass = gulpSass(nodeSass);
 
@@ -60,7 +62,7 @@ async function gwatch() {
 }
 
 async function delDist() {
-  return del
+  return deleteAsync(["./dist/**"]);
 }
 
 async function build(){
@@ -78,5 +80,5 @@ async function build(){
 exports.compileSass = compileSass;
 exports.javascript = series(javascript);
 exports.watch = gwatch;
-exports.build = build;
+exports.build = series(delDist, build);
 exports.default = parallel(compileSass, series(javascript), fbrowserSync, gwatch);
