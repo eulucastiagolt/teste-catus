@@ -68,7 +68,7 @@ export async function gwatch() {
 //   return deleteAsync(["./dist/**"]);
 // }
 
-export async function build_function(cb){
+export async function build(cb){
   await fs.rm("./dist", { recursive: true, force: true });
 
   await fs.cp("./assets", "./dist", { recursive: true }, (err) => {
