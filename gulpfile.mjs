@@ -6,12 +6,13 @@ import gulpConcat from "gulp-concat";
 import babel from "gulp-babel";
 import minify from "gulp-babel-minify";
 import rename from "gulp-rename";
-import { deleteAsync } from "del";
-
+// import { deleteAsync } from "del";
+// import copy from 'gulp-copy';
+import * as fs from 'node:fs/promises';
 
 const sass = gulpSass(nodeSass);
 
-async function fbrowserSync() {
+export async function fbrowserSync() {
   try {
     browserSync.init({
       server: {
@@ -27,7 +28,7 @@ async function fbrowserSync() {
   }
 }
 
-async function compileSass() {
+export async function compileSass() {
   return src("./app/sass/styles.scss")
     .pipe(sass({ outputStyle: "compressed", errLogToConsole: true }))
     .on("error", sass.logError)
@@ -36,7 +37,7 @@ async function compileSass() {
     .pipe(browserSync.stream({ match: "**/*.css" }));
 }
 
-async function javascript() {
+export async function javascript() {
   return src(["./app/js/**/*.js"])
     .pipe(gulpConcat("scripts.js"))
     .pipe(
@@ -55,30 +56,59 @@ async function javascript() {
     .pipe(rename({ suffix: ".min" }))
 }
 
-async function gwatch() {
+export async function gwatch() {
   watch("./app/sass/**/*.scss", compileSass);
   watch("./app/js/**/*.js", series(javascript)).on("change", browserSync.reload);
   watch("./*.html").on("change", browserSync.reload);
 }
 
-async function delDist() {
-  return deleteAsync(["./dist/**"]);
-}
+// async function delDist() {
+//   return deleteAsync(["./dist/**"]);
+// }
 
-async function build(){
-  const files = [
-    { src: "./assets/css/**/*.css", dest: "./dist/assets/css/" },
-    { src: "./assets/js/**/*.js", dest: "./dist/assets/js/" },
-    { src: "./assets/img/**/*", dest: "./dist/assets/img/" },
-    { src: "./index.html", dest: "./dist/" },
-  ];
-  await files.map(file => {
-    return src(file.src).pipe(dest(file.dest));
+export async function build_function(cb){
+  await fs.rm("./dist", { recursive: true, force: true });
+
+  await fs.cp("./assets", "./dist", { recursive: true }, (err) => {
+    if (err) {
+      console.log(err);
+    }
   });
+
+  await fs.cp("./index.html", "./dist/index.html", {}, (err) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+  cb();
 }
 
-exports.compileSass = compileSass;
-exports.javascript = series(javascript);
-exports.watch = gwatch;
-exports.build = series(delDist, build);
-exports.default = parallel(compileSass, series(javascript), fbrowserSync, gwatch);
+// export const build = series(delDist, build_function);
+
+export async function rename_images(cb) {
+  const images = await fs.readdir("./assets/img");
+  
+  images.forEach(image => {
+    const new_name = image.replace(' ', '_');
+    fs.rename(`./assets/img/${image}`, `./assets/img/${new_name}`, err => {
+      if(err){
+        console.log(`ERROR: ${err}`);
+      }
+    });
+  });
+
+  console.log(images);
+  
+  cb();
+  // return src('./assets/img/**/*')
+  // .pipe(copy('./'))
+  // .pipe(dest('./assets/img/'));
+}
+
+// exports.compileSass = compileSass;
+// exports.javascript = series(javascript);
+// exports.watch = gwatch;
+// exports.build = series(delDist, build);
+// exports.default = parallel(compileSass, series(javascript), fbrowserSync, gwatch);
+
+export default parallel(compileSass, series(javascript), fbrowserSync, gwatch);;
