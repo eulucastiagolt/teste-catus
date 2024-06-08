@@ -14,6 +14,16 @@
     align-items: center;
 
     .header{
+      &_left{
+        .header{
+          &_logo{
+            h1{
+              margin: 0;
+            }
+          }
+        }
+      }
+
       &_center{
         @include header-menu;
       }
