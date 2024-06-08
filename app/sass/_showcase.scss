@@ -1,0 +1,16 @@
+.showcase{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 38px 16px 66px 16px;
+
+  &_header{
+    width: 100%;
+    max-width: 1280px;
+  }
+
+  &_container{
+    width: 100%;
+    max-width: 1280px;
+  }
+}
