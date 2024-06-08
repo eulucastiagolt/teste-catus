@@ -57,7 +57,7 @@
       &::after{
         content: '';
         position: absolute;
-        bottom: -1.5px;
+        bottom: calc(-1px / 2);
         left: 0;
         width: 100px;
         height: 2px;

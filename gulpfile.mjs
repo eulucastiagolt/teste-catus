@@ -9,6 +9,7 @@ import rename from "gulp-rename";
 // import { deleteAsync } from "del";
 // import copy from 'gulp-copy';
 import * as fs from 'node:fs/promises';
+import autoprefixer from "gulp-autoprefixer";
 
 const sass = gulpSass(nodeSass);
 
@@ -32,6 +33,7 @@ export async function compileSass() {
   return src("./app/sass/styles.scss")
     .pipe(sass({ outputStyle: "compressed", errLogToConsole: true }))
     .on("error", sass.logError)
+    .pipe(autoprefixer())
     .pipe(rename({ basename: "styles", suffix: ".min" }))
     .pipe(dest("./assets/css/"))
     .pipe(browserSync.stream({ match: "**/*.css" }));
@@ -96,8 +98,6 @@ export async function rename_images(cb) {
       }
     });
   });
-
-  console.log(images);
   
   cb();
   // return src('./assets/img/**/*')
