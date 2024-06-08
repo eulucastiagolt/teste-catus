@@ -71,7 +71,7 @@ export async function gwatch() {
 export async function build(cb){
   await fs.rm("./dist", { recursive: true, force: true });
 
-  await fs.cp("./assets", "./dist", { recursive: true }, (err) => {
+  await fs.cp("./assets", "./dist/assets", { recursive: true }, (err) => {
     if (err) {
       console.log(err);
     }
