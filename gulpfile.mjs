@@ -42,18 +42,18 @@ export async function compileSass() {
 export async function javascript() {
   return src(["./app/js/plugins/**/*.js", "./app/js/functions.js"])
     .pipe(gulpConcat("scripts.js"))
-    // .pipe(
-    //   babel({
-    //     presets: ["@babel/env"],
-    //   })
-    // )
-    // .pipe(
-    //   minify({
-    //     mangle: {
-    //       keepClassName: true,
-    //     },
-    //   })
-    // )
+    .pipe(
+      babel({
+        presets: ["@babel/env"],
+      })
+    )
+    .pipe(
+      minify({
+        mangle: {
+          keepClassName: true,
+        },
+      })
+    )
     .pipe(rename({ suffix: ".min" }))
     .pipe(dest("./assets/js"));
 }
