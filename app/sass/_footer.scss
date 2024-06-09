@@ -1,16 +1,16 @@
 .footer{
-  background-color: var(--footer_background);
+  background-color: rgb(var(--footer_background));
   padding: 49px 16px;
   display: flex;
   justify-content: center;
-  color: var(--white);
+  color: rgb(var(--white));
 
   a{
-    color: var(--white);
+    color: rgb(var(--white));
     text-decoration: none;
 
     &:hover{
-      color: var(--primary);
+      color: rgb(var(--primary));
     }
   }
 
@@ -51,7 +51,7 @@
       font-size: 1rem;
       font-weight: 700;
       padding-bottom: 7px;
-      border-bottom: 1px solid var(--footer_border);
+      border-bottom: 1px solid rgb(var(--footer_border));
       position: relative;
 
       &::after{
@@ -61,7 +61,7 @@
         left: 0;
         width: 100px;
         height: 2px;
-        background-color: var(--secondary);
+        background-color: rgb(var(--secondary));
       }
     }
 

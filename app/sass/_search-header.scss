@@ -10,13 +10,13 @@
       &_input{
         padding: 10px 0;
         border: none;
-        border-bottom: 1px solid var(--black);
+        border-bottom: 1px solid rgb(var(--black));
         background: transparent;
         font-size: 0.875rem;
 
         &:focus{
           outline: none;
-          border-bottom-color: var(--primary);
+          border-bottom-color: rgb(var(--primary));
         }
       }
 
@@ -29,7 +29,7 @@
           cursor: pointer;
 
           svg path{
-            fill: var(--primary);
+            fill: rgb(var(--primary));
           }
         }
       }
