@@ -4,6 +4,9 @@
   justify-content: center;
   align-items: center;
   padding: 20px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 999999999;
 
   &_container{
     max-width: 1280px;
@@ -12,16 +15,30 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    z-index: 1;
 
     .header{
       &_left{
+        display: flex;
+        gap: 10px;
+
         .header{
           &_logo{
+
+            img{
+              @media screen and (max-width: 1024px){
+                height: 45px;
+              }
+            }
+
             h1{
               margin: 0;
             }
           }
         }
+
+        @include header-menu-mobile-action
       }
 
       &_center{
@@ -33,10 +50,16 @@
         gap: 30px;
         align-items: center;
 
+        @media screen and (max-width: 1024px){
+          gap: 10px;
+        }
+
         @include search-header;
 
         @include cart-header;
       }
     }
   }
+
+  @include mobile-search-header;
 }

@@ -17,6 +17,11 @@
     <header class="header">
       <div class="header_container">
         <div class="header_left">
+          <div class="header_menu_mobile_action">
+            <button type="button" class="header_menu_mobile_action_open">
+              <svg width="32" height="32" viewBox="0 0 40.96 40.96" xmlns="http://www.w3.org/2000/svg"><path d="M1.08 7.744C.752 7.416.592 7 .592 6.496s.16-.92.488-1.248.744-.488 1.248-.488h36.496q.756-.002 1.248.488c.492.49.488.744.488 1.248s-.16.92-.488 1.248-.744.488-1.248.488H2.328q-.756.002-1.248-.488m38.992 11.408c.328.328.488.744.488 1.248s-.16.92-.488 1.248-.744.488-1.248.488H2.328q-.756.002-1.248-.488c-.492-.49-.488-.744-.488-1.248s.16-.92.488-1.248.744-.488 1.248-.488h36.496q.756-.002 1.248.488m0 13.896c.328.328.488.744.488 1.248s-.16.92-.488 1.248-.744.488-1.248.488H2.328c-.504 0-.92-.16-1.248-.488S.592 34.8.592 34.296s.16-.92.488-1.248.744-.488 1.248-.488h36.496c.504 0 .92.168 1.248.488"/></svg>
+            </button>
+          </div>
           <div class="header_logo">
             <a href="#">
               <h1><img src="./assets//img//logo.svg" alt="Loja Catus" title="Loja Catus" /></h1>
@@ -31,10 +36,25 @@
               <li class="header_menu_list_item"><a class="header_menu_list_item_link" href="#">Sobre</a></li>
               <li class="header_menu_list_item"><a class="header_menu_list_item_link" href="#">Contato</a></li>
             </ul>
+            <button class="mobile_clode_menu">
+              <svg width="32" height="32" viewBox="-0.24 -0.24 0.96 0.96" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin" class="jam jam-close"><path d="M.293.236.434.095A.04.04 0 1 0 .377.038L.236.179.095.038a.04.04 0 1 0-.057.057l.141.141-.141.141a.04.04 0 1 0 .057.057L.236.293l.141.141A.04.04 0 1 0 .434.377z"/></svg>
+            </button>
           </nav>
         </div>
         <div class="header_right">
           <div class="header_search_container">
+            <div class="header_search_mobile_action">
+              <button type="button" class="header_search_mobile_action_button">
+                <svg width="37" height="35" viewBox="0 0 37 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M2.05859 13.7628C2.05859 7.82245 7.26457 2.88379 13.844 2.88379C20.4234 2.88379 25.6294 7.82245 25.6294 13.7628C25.6294 19.7031 20.4234 24.6418 13.844 24.6418C7.26457 24.6418 2.05859 19.7031 2.05859 13.7628ZM13.844 0.883789C6.30104 0.883789 0.0585938 6.58193 0.0585938 13.7628C0.0585938 20.9436 6.30104 26.6418 13.844 26.6418C17.273 26.6418 20.4332 25.4642 22.8604 23.5051L34.933 34.7218C35.3376 35.0977 35.9703 35.0744 36.3462 34.6698C36.7222 34.2652 36.6989 33.6325 36.2943 33.2566L24.3227 22.1337C26.3796 19.892 27.6294 16.9758 27.6294 13.7628C27.6294 6.58193 21.3869 0.883789 13.844 0.883789Z"
+                    fill="#202020"
+                  />
+                </svg>
+              </button>
+            </div>
             <form action="" class="header_search_form">
               <input type="text" name="search" id="header_search_input" placeholder="Digite aqui sua busca" class="header_search_input" />
               <button type="button" class="header_search_button">
@@ -65,6 +85,21 @@
             <div class="header_cart_modal"></div>
           </div>
         </div>
+      </div>
+      <div class="mobile_search">
+        <form action="" class="header_search_form">
+          <input type="text" name="search" id="header_search_input" placeholder="Digite aqui sua busca" class="header_search_input" />
+          <button type="button" class="header_search_button">
+            <svg width="37" height="35" viewBox="0 0 37 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M2.05859 13.7628C2.05859 7.82245 7.26457 2.88379 13.844 2.88379C20.4234 2.88379 25.6294 7.82245 25.6294 13.7628C25.6294 19.7031 20.4234 24.6418 13.844 24.6418C7.26457 24.6418 2.05859 19.7031 2.05859 13.7628ZM13.844 0.883789C6.30104 0.883789 0.0585938 6.58193 0.0585938 13.7628C0.0585938 20.9436 6.30104 26.6418 13.844 26.6418C17.273 26.6418 20.4332 25.4642 22.8604 23.5051L34.933 34.7218C35.3376 35.0977 35.9703 35.0744 36.3462 34.6698C36.7222 34.2652 36.6989 33.6325 36.2943 33.2566L24.3227 22.1337C26.3796 19.892 27.6294 16.9758 27.6294 13.7628C27.6294 6.58193 21.3869 0.883789 13.844 0.883789Z"
+                fill="#202020"
+              />
+            </svg>
+          </button>
+        </form>
       </div>
     </header>
 

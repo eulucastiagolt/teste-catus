@@ -1,35 +1,125 @@
 @mixin search-header {
-  .header{
-    &_search{
-      &_form{
+  .header {
+    &_search {
+      &_form {
         display: flex;
         align-items: center;
         gap: 10px;
+
+        @media screen and (max-width: 1024px) {
+          display: none;
+        }
       }
 
-      &_input{
+      &_input {
         padding: 10px 0;
         border: none;
         border-bottom: 1px solid rgb(var(--black));
         background: transparent;
         font-size: 0.875rem;
 
-        &:focus{
+        &:focus {
           outline: none;
           border-bottom-color: rgb(var(--primary));
         }
       }
 
-      &_button{
+      &_button {
         border: none;
         background-color: transparent;
         padding: 0;
 
-        &:hover{
+        &:hover {
           cursor: pointer;
 
-          svg path{
+          svg path {
             fill: rgb(var(--primary));
+          }
+        }
+      }
+
+      &_mobile_action {
+        &_button {
+          display: none;
+          border: none;
+          background-color: transparent;
+          padding: 0;
+
+          @media screen and (max-width: 1024px) {
+            display: flex;
+          }
+
+          &:hover {
+            cursor: pointer;
+
+            svg path {
+              fill: rgb(var(--primary));
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin mobile-search-header {
+  .mobile_search {
+    opacity: 0;
+    top: 50%;
+    visibility: hidden;
+    position: absolute;
+    display: flex;
+
+    background-color: rgb(var(--mobile_search_header));
+    width: 100%;
+    padding: 10px 16px;
+    transition: all 300ms;
+
+    &.show {
+      opacity: 1;
+      visibility: visible;
+      top: 100%;
+    }
+
+    .header {
+      &_search {
+        &_form {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          width: 100%;
+        }
+
+        &_input {
+          padding: 10px 0;
+          border: none;
+          border-bottom: 1px solid rgb(var(--white));
+          background: transparent;
+          font-size: 0.875rem;
+          flex: 1;
+          color: rgb(var(--white));
+
+          &:focus {
+            outline: none;
+            border-bottom-color: rgb(var(--primary));
+          }
+        }
+
+        &_button {
+          border: none;
+          background-color: transparent;
+          padding: 0;
+
+          svg path {
+            fill: rgb(var(--white));
+          }
+
+          &:hover {
+            cursor: pointer;
+
+            svg path {
+              fill: rgb(var(--primary));
+            }
           }
         }
       }
