@@ -7,10 +7,118 @@
   &_header{
     width: 100%;
     max-width: 1280px;
+
+    &_title{
+      font-size: 28px;
+      font-weight: 700;
+      text-align: center;
+      width: 100%;
+      padding-bottom: 17px;
+      border-bottom: 1px solid $showcase_border_title;
+      position: relative;
+      margin: 0;
+      margin-bottom: 17px;
+
+      &::after{
+        content: '';
+        width: 200px;
+        height: 3px;
+        background-color: $primary;
+        position: absolute;
+        left: 50%;
+        bottom: -2px;
+        transform: translateX(-50%);
+      }
+    }
   }
 
   &_container{
     width: 100%;
     max-width: 1280px;
+  }
+
+  &_list{
+    --cols: 4;
+    --gap: 8px;
+
+    display: flex;
+    gap: var(--gap);
+
+    &_item{
+      width: calc((100% / var(--cols)) - (var(--gap) * (var(--cols) - 1)) / var(--cols));
+      padding: 15px 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+
+      background: #FFFFFF;
+      transition: all 300ms;
+      
+      &:hover{
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.18);
+
+        & .showcase{
+          &_list{
+            &_item{
+              &_image{
+                transform: scaleX(-1);
+              }
+            }
+          }
+        }
+      }
+
+      &_header{
+        position: relative;
+      }
+
+      &_image{
+        width: 100%;
+        height: 0;
+        padding-top: 100%;
+        position: relative;
+
+        img{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+      }
+
+      &_flags{
+        position: absolute;
+        left: 20px;
+        top: 20px;
+
+        &_discount{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+
+          width: 38px;
+          height: 38px;
+          border-radius: 50px;
+          background: $primary;
+
+          font-size: 0.875rem;          
+          line-height: 0.875rem;
+
+          color: #404040;
+
+        }
+      }
+
+      &_title{
+        h3{
+          margin: 0;
+        }
+      }
+    }
   }
 }
