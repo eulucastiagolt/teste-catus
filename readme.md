@@ -2,6 +2,10 @@
 
 Este é um projeto de teste de front-end feito em HTML, CSS e JavaScript
 
+[Clique aqui](https://eulucastiagolt.github.io/teste-catus) para ver o projeto ao vivo ou segue o link a baixo.
+
+https://eulucastiagolt.github.io/teste-catus
+
 ### No projeto foram usado as seguintes tecnologis
 
 * HTML Puro
@@ -11,6 +15,8 @@ Este é um projeto de teste de front-end feito em HTML, CSS e JavaScript
 * Git
 * Node.js
 * PNPM
+* Github
+* Github pages
 
 ## Screenshots
 | Desktop                            | Mobile                           |
