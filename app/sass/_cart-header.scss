@@ -4,7 +4,7 @@
       &_button{
         &:hover{
           svg path{
-            fill: $primary;
+            fill: var(--primary);
           }
         }
       }
